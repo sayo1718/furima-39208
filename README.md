@@ -31,27 +31,25 @@
 | shipping_area_id  | integer    | null: false |
 | shipping_day_id   | integer    | null: false |
 | user              | reference  | null: false, foreign_key: true |
-| order_id          | reference  | null: false  |
-| explanation       | string     | null: false  |
+| explanation       | text       | null: false  |
 
 
 ### Association
 
-- has_one : orders
-- belongs_to :users
+- has_one : order
+- belongs_to :user
 
 ## orders テーブル
 
 | Column         | Type       | Options     |
 | ------         | ------     | ----------- |
-| user           | reference  | null: false, foreign_key: true |
-| item_id        | reference  | null: false, foreign_key: true |
+| item           | reference  | null: false, foreign_key: true |
 
 ### Association
 
 - has_one : shipping_address
-- has_many : users
-- belongs_to : items
+- belongs_to : user
+- belongs_to : item
 
 ### shipping_addressテーブル
 
@@ -64,6 +62,7 @@
 | street_address | string     | null: false |
 | building       | string     |             |
 | tell           | string     | null: false |
+| order          | reference  | null: false, foreign_key: true |
 
 ### Association
 
