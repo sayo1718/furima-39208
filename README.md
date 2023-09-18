@@ -28,9 +28,9 @@
 | delivery_charge_id| integer    | null: false |
 | category_id       | integer    | null: false |
 | item_condition_id | integer    | null: false |
-| shipping_area_id  | integer    | null: false |
+| prefecture_id     | integer    | null: false |
 | shipping_day_id   | integer    | null: false |
-| user              | reference  | null: false, foreign_key: true |
+| user              | references | null: false, foreign_key: true |
 | explanation       | text       | null: false  |
 
 
@@ -43,8 +43,8 @@
 
 | Column         | Type       | Options     |
 | ------         | ------     | ----------- |
-| user           | reference  | null: false, foreign_key: true |
-| item           | reference  | null: false, foreign_key: true |
+| user           | references | null: false, foreign_key: true |
+| item           | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -62,7 +62,7 @@
 | street_address | string     | null: false |
 | building       | string     |             |
 | tell           | string     | null: false |
-| order          | reference  | null: false, foreign_key: true |
+| order          | references | null: false, foreign_key: true |
 
 ### Association
 
