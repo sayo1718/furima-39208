@@ -29,34 +29,37 @@
 | category_id       | integer    | null: false |
 | item_condition_id | integer    | null: false |
 | shipping_area_id  | integer    | null: false |
-| shipping_days_id  | integer    | null: false |
-| user              | reference  | null: false |
-| order_id          | reference  | null: false, oreign_key: true  |
+| shipping_day_id   | integer    | null: false |
+| user              | reference  | null: false, foreign_key: true |
+| order_id          | reference  | null: false  |
+| explanation       | string     | null: false  |
+
 
 ### Association
 
-- has_one : order
-- belongs_to :user
+- has_one : orders
+- belongs_to :users
 
 ## orders テーブル
 
 | Column         | Type       | Options     |
 | ------         | ------     | ----------- |
 | user           | reference  | null: false, foreign_key: true |
-| item_name_id   | reference  | null: false, foreign_key: true |
+| item_id        | reference  | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :shipping_address
-- has_one : user
+- has_one : shipping_address
+- has_many : users
+- belongs_to : items
 
-### Shipping_addressテーブル
+### shipping_addressテーブル
 
 | Column         | Type       | Options     |
 | ------         | ------     | ----------- |
-| user           | reference  | null: false, foreign_key: true |
+| user           | reference  | null: false |
 | post_code      | string     | null: false |
-| prefectures    | integer    | null: false |
+| prefecture_id  | integer    | null: false |
 | city           | string     | null: false |
 | street_address | string     | null: false |
 | building       | string     |             |
@@ -64,4 +67,4 @@
 
 ### Association
 
-- has_one : order
+- belongs_to : order
