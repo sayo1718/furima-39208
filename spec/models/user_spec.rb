@@ -86,11 +86,24 @@ RSpec.describe User, type: :model do
           @user.valid?
           expect(@user.errors.full_messages).to include("Birth can't be blank")
         end
-        it 'passwordが6文字以上かつ半角英数字混合であれば登録できること' do
-         @user.password = '12345a'
-         @user.password_confirmation = '12345a'
-         expect(@user).to be_valid
+        it 'passwordが英字のみのパスワードでは登録できない' do
+         @user.password = 'aaaaaa'
+         @user.password_confirmation = 'aaaaaa'
+         @user.valid?
+         expect(@user.errors.full_messages).to include("Password is invalid")
          end
+         it 'passwordが数字のみのパスワードでは登録できない' do
+          @user.password = '111111'
+          @user.password_confirmation = '111111'
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Password is invalid")
+          end
+          it 'passwordが全角文字を含むパスワードでは登録できない' do
+            @user.password = '11111ａ'
+            @user.password_confirmation = '11111ａ'
+            @user.valid?
+            expect(@user.errors.full_messages).to include("Password is invalid")
+            end
   
 
   # 名前全角入力のテスト ▼
