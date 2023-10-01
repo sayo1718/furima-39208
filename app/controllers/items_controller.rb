@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    @items = Item.order(created_at: :desc)
   end
 
   def new
@@ -11,7 +12,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @items = Item.order(created_at: :desc)
     if @item.save
       redirect_to root_path
     else
