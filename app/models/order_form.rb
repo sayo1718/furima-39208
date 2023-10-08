@@ -14,7 +14,7 @@ class OrderForm
   end
 
   def save
-    order = Order.create(item_id: params[:item_id].to_i, user_id: user_id)
-    Payment.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, street_address: street_address, building: building, tell: tell, order_id: order.id)
+    order = Order.create(user_id: user_id, item_id: item_id)
+    ShippingAddress.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, street_address: street_address, building: building, tell: tell, order_id: order.id)
   end
 end
