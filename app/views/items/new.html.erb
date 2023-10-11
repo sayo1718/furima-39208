@@ -65,22 +65,26 @@
         <span>配送について</span>
         <a class="question" href="#">?</a>
       </div>
+      
       <div class="form">
         <div class="weight-bold-text">
           配送料の負担
           <span class="indispensable">必須</span>
         </div>
         <%= f.collection_select(:delivery_charge_id, DeliveryCharge.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
+       
         <div class="weight-bold-text">
           発送元の地域
           <span class="indispensable">必須</span>
         </div>
         <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
+        
         <div class="weight-bold-text">
           発送までの日数
           <span class="indispensable">必須</span>
         </div>
         <%= f.collection_select(:shipping_day_id, ShippingDay.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
+      
       </div>
     </div>
     <%# /配送について %>
